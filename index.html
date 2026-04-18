@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web AR Demo</title>
+    <script
+      src="https://unpkg.com/aframe@1.7.1/dist/aframe-v1.7.1.min.js"
+      integrity="sha384-q1j3u8zN/0QJFO0o9kVr8f8K90iXlGi6GHo+ou7YnVAfdgXmnH8W/naze8//B2c5"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://unpkg.com/@ar-js-org/ar.js@3.4.7/aframe/build/aframe-ar.js"
+      integrity="sha384-IC9Xny/2q05hlLPbZqDYB9EbdTE41ZOoHc7phBwo51cDt0Y79qZCb+a9zawiglyB"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .overlay {
+        position: fixed;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding: 0.75rem 1rem;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay">Point your camera at a Hiro marker to view AR content.</div>
+
+    <a-scene
+      embedded
+      vr-mode-ui="enabled: false"
+      renderer="logarithmicDepthBuffer: true"
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false;"
+    >
+      <a-marker preset="hiro">
+        <a-box position="0 0.5 0" material="color: #4cc3d9;"></a-box>
+      </a-marker>
+      <a-entity camera></a-entity>
+    </a-scene>
+  </body>
+</html>
